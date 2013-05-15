@@ -2,6 +2,7 @@ package org.ariadne_eu.metadata.resultsformat;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -82,106 +83,75 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
 			try {
 				idArrayJson.put(doc.get("lom.general.identifier.entry"));
 				
-				if (doc.get("lom.general.title.string") != null)
-					json.put("title", doc.get("lom.general.title.string"));
-				else
-					json.put("title", new String(""));
+				addJsonObjectWE(doc, json, "lom.general.title.langstring", "title");
+				addJsonObjectWE(doc, json, "lom.general.identifier.entry", "identifier");
+
+				addJsonObjectWE(doc, json, "lom.general.description.langstring",
+						"descriptions");
+				addJsonObjectWE(doc, json, "lom.general.language", "language");
+
+				addJsonObjectWE(doc, json, "lom.general.keyword.langstring",
+						"keywords");
+
+				addJsonObjectWE(doc, json, "lom.technical.location", "location");
+
+				addJsonObjectWE(doc, json, "lom.general.identifier.entry",
+						"identifier");
+
+				addJsonObjectWE(doc, json, "lom.educational.context.value",
+						"context");
+
+				addJsonObjectWE(doc, json, "lom.technical.size",
+						"size");
 				
-				if (doc.get("lom.general.description.string") != null)
-					json.put("description", doc.get("lom.general.description.string"));
-				else
-					json.put("description", new String(""));
-
-                               //** 18/11/12 NE: language
-                                if (doc.get("lom.general.language") != null)
-					json.put("language", doc.get("lom.general.language"));
-				else
-					json.put("language", new String(""));
-
-				if (doc.get("lom.general.keyword.string") != null){
-					Collection keywordsCollection = doc.getFieldValues("lom.general.keyword.string");
-					String keywords = "";
-					JSONArray keywordsArray = new JSONArray();
-					for (Iterator iterator = keywordsCollection.iterator(); iterator.hasNext();) {
-//						if (keywords.equals(""))
-//							keywords += "&#044;";
-						String keyword = (String) iterator.next();
-//						keywords += keyword;
-						keywordsArray.put(keyword);
-					}
-//					json.put("keywords", keywords);
-					json.put("keywords", keywordsArray);
-				}
-				else
-					json.put("keywords", new String(""));
 				
-				if (doc.get("lom.technical.location") != null)
-					json.put("location", doc.get("lom.technical.location"));
-				else
-					json.put("location", new String(""));
 				
-				if (doc.get("lom.general.identifier.entry") != null)
-					json.put("identifier", doc.get("lom.general.identifier.entry"));
-				else
-					json.put("identifier", new String(""));
-                                
-                                if (doc.get("lom.general.identifier.catalog") != null)
-					json.put("idCatalog", doc.get("lom.general.identifier.catalog"));
-				else
-					json.put("idCatalog", new String(""));
+				addJsonObjectWE(doc, json, "lom.metametadata.identifier.entry",
+						"metaMetadataId");
 
-                                /** In order to pass the context and the meta-metadata identifier **/
-                                if (doc.get("lom.educational.context.value") != null)
-                                        json.put("context", doc.get("lom.educational.context.value"));
-                                else
-                                        json.put("context", new String(""));
+				addJsonObjectWE(doc, json, "lom.technical.format", "format");
+				addJsonObjectWE(doc, json,
+						"lom.metametadata.identifier.catalog", "dataProvider");
 
-                                if (doc.get("lom.metametadata.identifier.entry") != null)
-                                        json.put("metaMetadataId", doc.get("lom.metametadata.identifier.entry"));
-                                else
-                                        json.put("metaMetadataId", new String(""));
+				addJsonObjectWE(doc, json, "lom.technical.duration", "thumbURL");
 
-                                if (doc.get("lom.technical.format") != null)
-                                        json.put("format", doc.get("lom.technical.format"));
-                                else
-                                        json.put("format", new String(""));
+				addJsonObjectWE(doc, json,
+						"lom.rights.copyrightandotherestrictions.value",
+						"license");
+//
+				addJsonObjectWE(doc, json,
+						"lom.educational.learningresourcetype.value", "type");
+				addJsonObject(doc, json, "lom.lifecycle.contribute.role.value",
+						"contributor role");
 
-                                /** 15/01/13 NE: dataPovider --> ODS: metaCatalog  **/
-                                if (doc.get("lom.metametadata.identifier.catalog") != null)
-                                        json.put("metaIdCatalog", doc.get("lom.metametadata.identifier.catalog"));
-                                else
-                                        json.put("metaIdCatalog", new String(""));
+				addJsonObjectWE(doc, json, "lom.general.identifier.catalog",
+						"catalog");
 
-                            /** 18/11/12 NE: Added in order to pass thumbnail URI, **/
-                                if (doc.get("lom.technical.duration") != null)
-                                        json.put("thumbURL", doc.get("lom.technical.duration"));
-                                else
-                                        json.put("thumbURL", new String(""));
+				addJsonObjectWE(doc, json,
+						"lom.lifecycle.contribute.date.datetime",
+						"contribution date");
 
-                            /** 18/11/12 NE: Added in order to pass license URI, **/
-                             if (doc.get("lom.rights.copyrightandotherrestrictions.string") != null)
-                                        json.put("licenses", "http://creativecommons.org/licenses/"+doc.get("lom.rights.copyrightandotherrestrictions.string")+"/3.0/");
-                                else
-                                        json.put("licenses", new String(""));
-                             
-                              /** 15/01/13 NE: Added in order to pass license URI, **/
-                             if (doc.get("collection") != null)
-                                        json.put("collection", doc.get("collection"));
-                                else
-                                        json.put("collection", new String(""));
-                             
-                             if (doc.get("key") != null)
-                                        json.put("key", doc.get("key"));
-                                else
-                                        json.put("key", new String(""));      
-                                                         
-                           /*added 18/1*/
-                             if (doc.get("md") != null)
-                                        json.put("md", doc.get("md"));
-                                else
-                                        json.put("md", new String(""));
-                      
-                             /**/
+				addJsonObjectWE(doc, json, "lom.lifecycle.contribute.entity",
+						"contributor");
+
+				addJsonObjectWE(doc, json,
+						"lom.classification.taxonpath.taxon.id",
+						"classification");
+
+				addJsonObjectWE(doc, json,
+						"lom.rights.copyrightandotherrestrictions.source",
+						"license source");
+
+				addJsonObjectWE(doc, json, "lom.annotation.date.datetime",
+						"annotation date");
+				addJsonObjectWE(doc, json, "lom.rights.description.langstring",
+						"rights");
+				addJsonObjectWE(doc, json, "lom.classification.purpose.value",
+						"classification purpose");
+				addJsonObjectWE(doc, json, "lom.relation.resource.identifier.entry",
+						"relation");
+			
+				addJsonObject(doc, json, "mdPath", "mdPath");
 
 			} catch (JSONException ex) {
 				log.error(ex);
@@ -196,7 +166,94 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
 		
 		return resultsJson.toString();
 	}
-	
+	private void addJsonObjectWE(SolrDocument doc, JSONObject json,
+			String fieldName, String responeseName) throws JSONException {
+
+		Collection collection = new HashSet();
+
+		handleAttributeElements(doc, json, fieldName, responeseName, collection);
+	}
+
+	private void handleAttributeElements(SolrDocument doc, JSONObject json,
+			String fieldName, String responseName, Collection data)
+			throws JSONException {
+
+		String langAttributes = fieldName + ".language";
+
+		Collection<Object> fieldValues = doc.getFieldValues(fieldName);
+		Collection<Object> fieldLangValues = doc.getFieldValues(langAttributes);
+
+		if (fieldValues != null && fieldLangValues != null) {
+
+			Object[] fValuesarray = fieldValues.toArray();
+			Object[] flvArray = fieldLangValues.toArray();
+
+			for (int i = 0; i < fValuesarray.length; i++) {
+
+				Object fValue = fValuesarray[i];
+
+				Object fLangValue = "noLangValue";
+				try {
+					fLangValue = flvArray[i];
+
+					JSONObject jsonObject = new JSONObject();
+					jsonObject.put("value", fValue);
+					jsonObject.put("lang", fLangValue);
+
+					data.add(jsonObject);
+				} catch (IndexOutOfBoundsException ex) {
+
+					JSONObject jsonObject = new JSONObject();
+					jsonObject.put("value", fValue);
+					jsonObject.put("lang", fLangValue);
+					data.add(jsonObject);
+				}
+
+			}
+
+			json.put(responseName, data);
+		} else if (fieldValues != null && fieldLangValues == null) {
+			addJsonObject(doc, json, fieldName, responseName);
+
+		}
+
+	}
+
+	private void addJsonObject(SolrDocument doc, JSONObject json,
+			String fieldName, String responeseName) throws JSONException {
+		// Object field = doc.get(fieldName);
+
+		Collection<Object> values = doc.getFieldValues(fieldName);
+
+		if (values != null) {
+
+			Object[] results = values.toArray();
+
+			int length = results.length;
+			if (length == 1) {
+				Object object = results[0];
+				json.put(responeseName, object);
+
+			} else {
+				JSONObject jsonObject = new JSONObject();
+
+				for (int i = 0; i < results.length; i++) {
+
+					Object object = results[i];
+
+					jsonObject.put(responeseName + "_" + i, object);
+
+				}
+				json.put(responeseName, jsonObject);
+			}
+
+		}
+
+		// if (field != null)
+		// json.put(responeseName, field);
+		// else
+		// json.put(responeseName, new String(""));
+	}
 	private QueryResponse getSolrResponse() {
 		SolrServerManagement serverMgt = SolrServerManagement.getInstance();
 
@@ -279,7 +336,7 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
 			return "rights";
 		else if (internalName.equalsIgnoreCase("lom.rights.copyrightandotherrestrictions.string"))
 			return "licences";
-                 else if (internalName.equalsIgnoreCase("lom.classification.taxonpath.taxon.entry.string"))
+                 else if (internalName.equalsIgnoreCase("lom.classification.taxonpath.taxon.entry.langstring"))
 			return "classification";
                 else if (internalName.equalsIgnoreCase("lom.educational.typicalagerange.string"))
 			return "temporal";
