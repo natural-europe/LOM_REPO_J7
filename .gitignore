@@ -5,3 +5,6 @@
 *.war
 *.ear
 *.swp
+/.settings
+/.classpath
+/.project
