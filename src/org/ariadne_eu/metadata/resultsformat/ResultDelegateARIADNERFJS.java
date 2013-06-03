@@ -93,6 +93,8 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
 
 				addJsonObjectWE(doc, json, "lom.general.keyword.langstring",
 						"keywords");
+				addJsonObjectWE(doc, json, "lom.general.keyword.string",
+						"keywords");
 
 				addJsonObjectWE(doc, json, "lom.technical.location", "location");
 
@@ -146,6 +148,8 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
 				addJsonObjectWE(doc, json, "lom.annotation.date.datetime",
 						"annotation date");
 				addJsonObjectWE(doc, json, "lom.rights.description.langstring",
+						"rights");
+				addJsonObjectWE(doc, json, "lom.rights.description.string",
 						"rights");
 				addJsonObjectWE(doc, json, "lom.classification.purpose.value",
 						"classification purpose");
