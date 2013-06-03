@@ -84,6 +84,7 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
 				idArrayJson.put(doc.get("lom.general.identifier.entry"));
 				
 				addJsonObjectWE(doc, json, "lom.general.title.langstring", "title");
+				addJsonObjectWE(doc, json, "lom.general.title.string", "title");
 				addJsonObjectWE(doc, json, "lom.general.identifier.entry", "identifier");
 
 				addJsonObjectWE(doc, json, "lom.general.description.langstring",
