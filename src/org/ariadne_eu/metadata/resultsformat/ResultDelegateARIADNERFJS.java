@@ -107,8 +107,6 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
 				addJsonObjectWE(doc, json, "lom.technical.size",
 						"size");
 				
-				
-				
 				addJsonObjectWE(doc, json, "lom.metametadata.identifier.entry",
 						"metaMetadataId");
 
