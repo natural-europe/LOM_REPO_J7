@@ -467,8 +467,16 @@
     <field name="lom.general.identifier.entry" type="string" indexed="true" stored="true" multiValued="true"/>
     <field name="lom.general.identifier.catalog" type="string" indexed="true" stored="true" multiValued="true"/>
     <field name="lom.general.title.string" type="ariadne_contents" indexed="true" stored="true"/>
+    <field name="lom.general.title.langstring" type="ariadne_contents" indexed="true" stored="true"/>
+    
+    
     <field name="lom.general.description.string" type="string" indexed="true" stored="true"/>
+    <field name="lom.general.description.langstring" type="string" indexed="true" stored="true"/>
+    
     <field name="lom.general.keyword.string" type="ariadne_contents" indexed="true" stored="true"/>
+    <field name="lom.general.keyword.langstring" type="ariadne_contents" indexed="true" stored="true"/>
+    
+    
     <field name="lom.general.language" type="string" indexed="true" stored="true" multiValued="true"/>
     <field name="lom.general.learningobjectkind.value" type="string" indexed="true" stored="true" multiValued="true"/>
     
@@ -484,7 +492,10 @@
     <field name="lom.educational.learningresourcetype.value" type="string" indexed="true" stored="true" multiValued="true"/>
     <field name="lom.educational.interactivitylevel.value" type="string" indexed="true" stored="true" multiValued="true"/>
     <field name="lom.educational.intendedenduserrole.value" type="string" indexed="true" stored="true" multiValued="true"/>
+    
     <field name="lom.educational.context.value" type="string" indexed="true" stored="true" multiValued="true"/>
+    
+    
     <field name="lom.educational.typicalagerange.string" type="string" indexed="true" stored="true" multiValued="true"/>
 	<field name="lom.educational.learningoutcome.identifier.entry" type="string" indexed="true" stored="true" multiValued="true"/>
     
