@@ -20,9 +20,9 @@ import org.eun.lucene.core.indexer.document.DocumentHandlerException;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
-public class LOMHandler extends DocumentHandler {
+public class ODSAP_Handler extends DocumentHandler {
 	
-	private static Logger log = Logger.getLogger(LOMHandler.class);
+	private static Logger log = Logger.getLogger(ODSAP_Handler.class);
 
 	private static final String[] MIN_MAX = { "min", "max" };
 	/** A buffer for each XML element */
@@ -424,7 +424,7 @@ public class LOMHandler extends DocumentHandler {
 	}
 
 	public static void main(String args[]) throws Exception {
-		LOMHandler handler = new LOMHandler();
+		ODSAP_Handler handler = new ODSAP_Handler();
 		Document doc = handler.getDocument(new FileInputStream(new File("/work/workspaces/workspace/OaiHarvester/loms/0cd5b723-d6df-4f61-8da3-154a1b5c5eea.xml")));
 		List fields = doc.getFields();
 		for (Iterator iterator = fields.iterator(); iterator.hasNext();) {
