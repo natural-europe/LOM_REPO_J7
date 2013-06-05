@@ -74,8 +74,14 @@ public class ODSAPDocumentAnalyzer extends DocumentAnalyzer{
 		
 		pfanalyzer.addAnalyzer("lom.classification.purpose.value", new KeywordAnalyzer());
 		pfanalyzer.addAnalyzer("lom.classification.purpose.value.exact", new KeywordAnalyzer());
+		
 		pfanalyzer.addAnalyzer("lom.classification.taxonpath.source.string", new KeywordAnalyzer());
 		pfanalyzer.addAnalyzer("lom.classification.taxonpath.taxon.entry.string.exact", new KeywordAnalyzer());
+		
+		pfanalyzer.addAnalyzer("lom.classification.taxonpath.source.langstring", new KeywordAnalyzer());
+		pfanalyzer.addAnalyzer("lom.classification.taxonpath.taxon.entry.langstring.exact", new KeywordAnalyzer());
+		
+		
 		pfanalyzer.addAnalyzer("lom.classification.taxonpath.taxon.id", new KeywordAnalyzer());
 		pfanalyzer.addAnalyzer("lom.classification.taxonpath.taxon.competency.eqf", new KeywordAnalyzer());
 		pfanalyzer.addAnalyzer("lom.classification.taxonpath.taxon.domain.eqf", new KeywordAnalyzer());
