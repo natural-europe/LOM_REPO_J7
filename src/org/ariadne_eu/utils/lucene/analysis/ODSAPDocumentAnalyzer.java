@@ -66,7 +66,7 @@ public class ODSAPDocumentAnalyzer extends DocumentAnalyzer{
 		pfanalyzer.addAnalyzer("lom.rights.description.string.language", new KeywordAnalyzer());
 		pfanalyzer.addAnalyzer("lom.rights.description.string", new SnowballAnalyzer(Version.LUCENE_29,"English"));
 		
-		pfanalyzer.addAnalyzer("lom.rights.description.langstring.language", new KeywordAnalyzer());
+		pfanalyzer.addAnalyzer("lom.rights.description.langstring.xml:lang", new KeywordAnalyzer());
 		pfanalyzer.addAnalyzer("lom.rights.description.langstring", new SnowballAnalyzer(Version.LUCENE_29,"English"));
 		
 		pfanalyzer.addAnalyzer("lom.rights.cost.value", new KeywordAnalyzer());
