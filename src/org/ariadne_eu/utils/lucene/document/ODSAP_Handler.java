@@ -174,7 +174,7 @@ public class ODSAP_Handler extends DocumentHandler {
 				String attValue = ((String) attributeMap.get(attName))
 						.toLowerCase();
 				String fieldName = tmpBranche + "" + ATT_SEPARATOR + ""
-						+ attName + "" + EQUAL_SEPARATOR + "" + attValue;
+						+ "language" + "" + EQUAL_SEPARATOR + "" + attValue; //+ attName + "" + EQUAL_SEPARATOR + "" + attValue;
 				// GAP: elimino esto de los iguales en el field name proq no
 				// puedo hacerlo con plql
 				// doc.add(new Field(fieldName.toLowerCase(),
@@ -220,6 +220,7 @@ public class ODSAP_Handler extends DocumentHandler {
 					|| tmpBranche
 							.endsWith("classification.taxonpath.source.langstring")) {
 				taxonPathSource = elementBuffer.toString().trim().toLowerCase();
+				taxonPathSource=taxonPathSource.substring(0,taxonPathSource.lastIndexOf("."))+".string";
 				doc.add(new Field(tmpBranche, taxonPathSource, Field.Store.YES,
 						Field.Index.NOT_ANALYZED));// XXX
 
