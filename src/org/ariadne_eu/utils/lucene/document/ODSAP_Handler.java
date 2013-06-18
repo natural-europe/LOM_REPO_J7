@@ -111,6 +111,11 @@ public class ODSAP_Handler extends DocumentHandler {
 						}
 						String fieldName = tmpBranche + "" + ATT_SEPARATOR + ""
 								+ atts.getQName(i);
+						// System.out.println(fieldName);
+						if (fieldName.contains("langstring.xml:lang")) {
+							fieldName = fieldName.replace(
+									"langstring.xml:lang", "string.language");
+						}
 						doc.add(new Field(fieldName.toLowerCase(), atts
 								.getValue(i).toLowerCase(), Field.Store.YES,
 								Field.Index.NOT_ANALYZED));// XXX
@@ -174,7 +179,16 @@ public class ODSAP_Handler extends DocumentHandler {
 				String attValue = ((String) attributeMap.get(attName))
 						.toLowerCase();
 				String fieldName = tmpBranche + "" + ATT_SEPARATOR + ""
-						+ "language" + "" + EQUAL_SEPARATOR + "" + attValue; //+ attName + "" + EQUAL_SEPARATOR + "" + attValue;
+						+ "language" + "" + EQUAL_SEPARATOR + "" + attValue; // +
+																				// attName
+																				// +
+																				// ""
+																				// +
+																				// EQUAL_SEPARATOR
+																				// +
+																				// ""
+																				// +
+																				// attValue;
 				// GAP: elimino esto de los iguales en el field name proq no
 				// puedo hacerlo con plql
 				// doc.add(new Field(fieldName.toLowerCase(),
@@ -220,7 +234,9 @@ public class ODSAP_Handler extends DocumentHandler {
 					|| tmpBranche
 							.endsWith("classification.taxonpath.source.langstring")) {
 				taxonPathSource = elementBuffer.toString().trim().toLowerCase();
-				taxonPathSource=taxonPathSource.substring(0,taxonPathSource.lastIndexOf("."))+".string";
+				tmpBranche = tmpBranche.substring(0,
+						tmpBranche.lastIndexOf("."))
+						+ ".string";
 				doc.add(new Field(tmpBranche, taxonPathSource, Field.Store.YES,
 						Field.Index.NOT_ANALYZED));// XXX
 
@@ -256,12 +272,16 @@ public class ODSAP_Handler extends DocumentHandler {
 				// elementBuffer.toString().trim().toLowerCase(),
 				// Field.Store.YES, Field.Index.NOT_ANALYZED));
 			} else if (tmpBranche
-					.endsWith("classification.taxonpath.taxon.entry.string")||tmpBranche
-					.endsWith("classification.taxonpath.taxon.entry.langstring")) {
+					.endsWith("classification.taxonpath.taxon.entry.string")
+					|| tmpBranche
+							.endsWith("classification.taxonpath.taxon.entry.langstring")) {
 
 				// doc.add(new Field(lastFieldName,
 				// taxonPathSource+elementBuffer.toString().trim(),
 				// Field.Store.YES,Field.Index.ANALYZED));//XXX
+				tmpBranche = tmpBranche.substring(0,
+						tmpBranche.lastIndexOf("."))
+						+ ".string";
 
 				doc.add(new Field(tmpBranche, elementBuffer.toString().trim()
 						.toLowerCase(), Field.Store.YES, Field.Index.ANALYZED));// XXX
@@ -302,7 +322,11 @@ public class ODSAP_Handler extends DocumentHandler {
 		}
 		// Title
 		else if (tmpBranche.matches(".*title.*")) {
-			if (tmpBranche.endsWith("title.string") || tmpBranche.endsWith("title.langstring") ) {
+			if (tmpBranche.endsWith("title.string")
+					|| tmpBranche.endsWith("title.langstring")) {
+				tmpBranche = tmpBranche.substring(0,
+						tmpBranche.lastIndexOf("."))
+						+ ".string";
 				doc.add(new Field(tmpBranche.toLowerCase(), elementBuffer
 						.toString().trim().toLowerCase(), Field.Store.YES,
 						Field.Index.ANALYZED));// XXX
@@ -364,7 +388,11 @@ public class ODSAP_Handler extends DocumentHandler {
 		// <string language="en">12-15</string>
 		// <string language="x-t-lre">12-15</string>
 		// </typicalAgeRange>
-		else if (tmpBranche.matches(".*educational.typicalagerange.string")||tmpBranche.matches(".*educational.typicalagerange.langstring")) {
+		else if (tmpBranche.matches(".*educational.typicalagerange.string")
+				|| tmpBranche
+						.matches(".*educational.typicalagerange.langstring")) {
+			tmpBranche = tmpBranche.substring(0, tmpBranche.lastIndexOf("."))
+					+ ".string";
 			doc.add(new Field(tmpBranche.toLowerCase(), elementBuffer
 					.toString().toLowerCase().trim(), Field.Store.YES,
 					Field.Index.NOT_ANALYZED));// XXX
@@ -471,13 +499,19 @@ public class ODSAP_Handler extends DocumentHandler {
 					.toString(), Field.Store.YES, Field.Index.NOT_ANALYZED));// XXX
 		}
 		// general.description.string
-		else if (tmpBranche.matches(".*general.description.string")||tmpBranche.matches(".*general.description.langstring")) {
+		else if (tmpBranche.matches(".*general.description.string")
+				|| tmpBranche.matches(".*general.description.langstring")) {
+			tmpBranche = tmpBranche.substring(0, tmpBranche.lastIndexOf("."))
+					+ ".string";
 			String format = elementBuffer.toString().toLowerCase().trim();
 			doc.add(new Field(tmpBranche.toLowerCase(), format,
 					Field.Store.YES, Field.Index.ANALYZED));// XXX
 		}
 		// general.keyword.string
-		else if (tmpBranche.matches(".*general.keyword.string")||tmpBranche.matches(".*general.keyword.langstring")) {
+		else if (tmpBranche.matches(".*general.keyword.string")
+				|| tmpBranche.matches(".*general.keyword.langstring")) {
+			tmpBranche = tmpBranche.substring(0, tmpBranche.lastIndexOf("."))
+					+ ".string";
 			String format = elementBuffer.toString().toLowerCase().trim();
 			doc.add(new Field(tmpBranche.toLowerCase(), format,
 					Field.Store.YES, Field.Index.ANALYZED));// XXX
