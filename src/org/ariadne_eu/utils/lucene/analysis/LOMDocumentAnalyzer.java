@@ -37,12 +37,12 @@ public class LOMDocumentAnalyzer extends DocumentAnalyzer{
 		pfanalyzer.addAnalyzer("lom.general.title.string.exact", new KeywordAnalyzer());
 		pfanalyzer.addAnalyzer("lom.general.title.string", new SnowballAnalyzer(Version.LUCENE_29,"English"));
 		
-		pfanalyzer.addAnalyzer("lom.general.title.langstring.exact", new KeywordAnalyzer());
-		pfanalyzer.addAnalyzer("lom.general.title.langstring", new SnowballAnalyzer(Version.LUCENE_29,"English"));
+		//pfanalyzer.addAnalyzer("lom.general.title.langstring.exact", new KeywordAnalyzer());
+		//pfanalyzer.addAnalyzer("lom.general.title.langstring", new SnowballAnalyzer(Version.LUCENE_29,"English"));
 		
 		
 		pfanalyzer.addAnalyzer("lom.general.keyword.string", new SnowballAnalyzer(Version.LUCENE_29,"English"));
-		pfanalyzer.addAnalyzer("lom.general.keyword.langstring", new SnowballAnalyzer(Version.LUCENE_29,"English"));
+		//pfanalyzer.addAnalyzer("lom.general.keyword.langstring", new SnowballAnalyzer(Version.LUCENE_29,"English"));
 		
 		pfanalyzer.addAnalyzer("lom.general.language", new KeywordAnalyzer());
 		
@@ -66,8 +66,8 @@ public class LOMDocumentAnalyzer extends DocumentAnalyzer{
 		pfanalyzer.addAnalyzer("lom.rights.description.string.language", new KeywordAnalyzer());
 		pfanalyzer.addAnalyzer("lom.rights.description.string", new SnowballAnalyzer(Version.LUCENE_29,"English"));
 		
-		pfanalyzer.addAnalyzer("lom.rights.description.langstring.language", new KeywordAnalyzer());
-		pfanalyzer.addAnalyzer("lom.rights.description.langstring", new SnowballAnalyzer(Version.LUCENE_29,"English"));
+		//pfanalyzer.addAnalyzer("lom.rights.description.langstring.language", new KeywordAnalyzer());
+		//pfanalyzer.addAnalyzer("lom.rights.description.langstring", new SnowballAnalyzer(Version.LUCENE_29,"English"));
 		
 		pfanalyzer.addAnalyzer("lom.rights.cost.value", new KeywordAnalyzer());
 		pfanalyzer.addAnalyzer("lom.rights.copyrightandotherrestrictions.value", new KeywordAnalyzer());
