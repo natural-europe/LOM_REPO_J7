@@ -101,6 +101,25 @@ public class InsertMetadataLuceneImpl extends InsertMetadataImpl {
 			}
 		}
 	}
+	public void openLuceneIndex() {
+		IndexWriter writer = null;
+		try {
+			DocumentAnalyzer analyzer = DocumentAnalyzerFactory.getDocumentAnalyzerImpl();
+			writer = new IndexWriter(FSDirectory.open(indexDir), analyzer.getAnalyzer(), false, IndexWriter.MaxFieldLength.UNLIMITED);
+			writer.setUseCompoundFile(true);
+			writer.optimize();
+		} catch (IOException e) {
+			e.printStackTrace(); //To change body of catch statement use File | Settings | File Templates.
+		} finally {
+			if (writer != null) {
+				try {
+					writer.close();
+				} catch (IOException e) {
+					e.printStackTrace(); //To change body of catch statement use File | Settings | File Templates.
+				}
+			}
+		}
+	}
 
 	public File getIndexDir() {
 		return indexDir;

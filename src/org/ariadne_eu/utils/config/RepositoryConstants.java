@@ -39,7 +39,11 @@ public class RepositoryConstants extends Constants {
 	public String SR_LUCENE_INMEMORY = "search.lucene.inmemory";
 	public String SR_LUCENE_HANDLER = "search.lucene.handler";
 	public String SR_LUCENE_ANALYZER = "search.lucene.analyzer";
+	
 	public String SR_LUCENE_REINDEX = "search.lucene.reindex";
+	public String SR_LUCENE_REINDEX_REPOS = "search.lucene.reindex.repositories";
+	
+	
 	public String SR_LUCENE_REINDEX_MAXQRYRESULTS = "search.lucene.reindex.maxqueryresults";
 	public String SR_XPATH_QRY_ID = "search.xpath.query.identifier";
 	public String SR_LUCENE_HANDLER_MACE = "search.lucene.handler.mace";
@@ -52,6 +56,7 @@ public class RepositoryConstants extends Constants {
 	public String MD_QUERY_IMPLEMENTATION = "mdstore.query.implementation";
 	
 	public String MD_SPIFS_DIR = "mdstore.spifs.dir";
+
 	
 	public String MD_SPIFWD_SM_URL = "mdstore.spiforward.sm.url";
 	public String MD_SPIFWD_SPI_URL = "mdstore.spiforward.spi.url";
