@@ -33,7 +33,9 @@ public class RepositoryConstants extends Constants {
 	public String REG_LOGIN = "registry.login";
 	
 	public Version SR_LUCENE_VERSION = Version.LUCENE_29;
-	public String SR_LUCENE_INDEXDIR = "search.lucene.indexdir";
+	public String SR_LUCENE_INDEXDIR_READ = "search.lucene.indexdir.read";
+	public String SR_LUCENE_INDEXDIR_WRITE = "search.lucene.indexdir.write";
+	
 	public String SR_LUCENE_INMEMORY = "search.lucene.inmemory";
 	public String SR_LUCENE_HANDLER = "search.lucene.handler";
 	public String SR_LUCENE_ANALYZER = "search.lucene.analyzer";

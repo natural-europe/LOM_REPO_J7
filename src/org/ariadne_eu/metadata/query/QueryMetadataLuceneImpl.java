@@ -50,14 +50,14 @@ public class QueryMetadataLuceneImpl extends QueryMetadataImpl {
     void initialize() {
         super.initialize();
         try {
-            String indexDirString = PropertiesManager.getInstance().getProperty(RepositoryConstants.getInstance().SR_LUCENE_INDEXDIR + "." + getLanguage());
+            String indexDirString = PropertiesManager.getInstance().getProperty(RepositoryConstants.getInstance().SR_LUCENE_INDEXDIR_READ + "." + getLanguage());
             if (indexDirString == null)
-        	indexDirString = PropertiesManager.getInstance().getProperty(RepositoryConstants.getInstance().SR_LUCENE_INDEXDIR);
+        	indexDirString = PropertiesManager.getInstance().getProperty(RepositoryConstants.getInstance().SR_LUCENE_INDEXDIR_READ);
             if (indexDirString == null)
-                log.error("initialize failed: no " + RepositoryConstants.getInstance().SR_LUCENE_INDEXDIR + " found");
+                log.error("initialize failed: no " + RepositoryConstants.getInstance().SR_LUCENE_INDEXDIR_READ + " found");
             indexDir = new File(indexDirString);
             if (!indexDir.isDirectory())
-                log.error("initialize failed: " + RepositoryConstants.getInstance().SR_LUCENE_INDEXDIR + " invalid directory");
+                log.error("initialize failed: " + RepositoryConstants.getInstance().SR_LUCENE_INDEXDIR_READ + " invalid directory");
             //TODO: check for valid lucene index
         } catch (Throwable t) {
             log.error("initialize: ", t);
