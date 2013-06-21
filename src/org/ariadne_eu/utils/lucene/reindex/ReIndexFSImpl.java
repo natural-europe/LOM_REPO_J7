@@ -100,7 +100,6 @@ public class ReIndexFSImpl extends ReIndexImpl {
 
 		String[] repoSelected = { repositories };
 		File dir = new File(outputDir);
-		// File[] files = dir.listFiles();
 
 		Vector<File> files = new Vector<>();
 
@@ -110,12 +109,27 @@ public class ReIndexFSImpl extends ReIndexImpl {
 			for (int i = 0; i < repoSelected.length; i++) {
 
 				File repo = new File(dir, repoSelected[i]);
-				files.add(repo);
+				if (repo.exists()) {
+					log.info("Resitory:" + repo.getName()
+							+ " will be reindexed.");
 
-				System.out.println(repoSelected[i]);
+					if (!files.contains(repo))
+						files.add(repo);
+					else
+						log.error("Resitory:" + repo.getName()
+								+ " is allready in the list to be reindexed.");
+				} else
+					log.error("Repository:" + repo.getName()
+							+ " does not exist.");
+
 			}
-		} else
+		} else {
 			log.error("Indexing all repositories");
+			File[] allFiles = dir.listFiles();
+			for (int i = 0; i < allFiles.length; i++) {
+				files.add(allFiles[i]);
+			}
+		}
 
 		InsertMetadataImpl[] insertImpls = InsertMetadataFactory
 				.getInsertImpl();
