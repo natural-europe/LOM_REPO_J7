@@ -58,7 +58,7 @@ public class ReIndexFSImpl extends ReIndexImpl {
 						+ RepositoryConstants.getInstance().MD_SPIFS_DIR
 						+ " found");
 
-			if (repos == null) {
+			if (repos == null || repos.equals("")) {
 				log.error("initialize failed: no repositories defined for reindexing");
 				log.error("Using default *(all repositories) option.");
 				repos = "*";
@@ -179,7 +179,7 @@ public class ReIndexFSImpl extends ReIndexImpl {
 								Arrays.asList(cName));
 						allCnames.add(collection[j].getName());
 						String[] newcName = allCnames.toArray(new String[1]);
-						System.out.println(allCnames);
+						// System.out.println(allCnames);
 						indexFile(collection[j], luceneImpl, newcName);
 					} else {
 						indexFile(collection[j], luceneImpl, cName);
