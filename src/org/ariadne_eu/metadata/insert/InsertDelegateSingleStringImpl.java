@@ -61,7 +61,7 @@ public class InsertDelegateSingleStringImpl implements IndexInserterDelegate {
 					DateTools.Resolution.MILLISECOND), Field.Store.YES,
 					Field.Index.NOT_ANALYZED));
 
-			doc.add(new Field("fPath", fPath, Field.Store.YES,
+			doc.add(new Field("mdPath", fPath, Field.Store.YES,
 					Field.Index.NOT_ANALYZED));
 			String luceneHandler = PropertiesManager.getInstance().getProperty(
 					RepositoryConstants.getInstance().SR_LUCENE_HANDLER);
