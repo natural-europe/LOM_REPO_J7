@@ -59,12 +59,12 @@ public class InsertMetadataFactory {
 	}
 
 	public static void insertMetadata(String identifier, String metadata,
-			String collection) throws InsertMetadataException {
+			String collection, String fPath) throws InsertMetadataException {
 		InsertMetadataImpl[] impls = getInsertImpl();
 		for (int i = 0; i < impls.length; i++) {
 			InsertMetadataImpl impl = impls[i];
 			try {
-				impl.insertMetadata(identifier, metadata, collection);
+				impl.insertMetadata(identifier, metadata, collection,fPath);
 			} catch (InsertMetadataException e) {
 				throw e;
 			}

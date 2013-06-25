@@ -51,14 +51,14 @@ public class InsertMetadataLuceneImpl extends InsertMetadataImpl {
 	}
 	
 	@Override
-	public synchronized void insertMetadata(String identifier, String metadata, String collection) throws InsertMetadataException {
-		insertMetadata(identifier, metadata, new String[] {collection});
+	public synchronized void insertMetadata(String identifier, String metadata, String collection,String fPath) throws InsertMetadataException {
+		insertMetadata(identifier, metadata, new String[] {collection},fPath);
 		
 	}
 
-	public synchronized void insertMetadata(String identifier, String metadata, String[] collection) throws InsertMetadataException{
+	public synchronized void insertMetadata(String identifier, String metadata, String[] collection,String fPath) throws InsertMetadataException{
 		try {
-			InsertDelegateSingleStringImpl indexInserterDelegate = new InsertDelegateSingleStringImpl(identifier, metadata,collection);
+			InsertDelegateSingleStringImpl indexInserterDelegate = new InsertDelegateSingleStringImpl(identifier, metadata,collection,fPath);
 			
 			boolean create = createIndex(indexDir);
 			

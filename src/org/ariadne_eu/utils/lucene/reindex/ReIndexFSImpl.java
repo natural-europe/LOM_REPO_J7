@@ -169,6 +169,7 @@ public class ReIndexFSImpl extends ReIndexImpl {
 	private static void indexFile(File mdFile,
 			InsertMetadataLuceneImpl luceneImpl, String[] cName) {
 		String xml = null;
+		String fPath = null;
 		if (!mdFile.getName().equalsIgnoreCase(".DS_Store")) {
 			if (mdFile.isDirectory()) {
 
@@ -198,9 +199,9 @@ public class ReIndexFSImpl extends ReIndexImpl {
 							new OutputFormat(doc));
 					serializer.serialize((Element) doc.getFirstChild());
 					String lom = out.toString();
-
+					 fPath = mdFile.getAbsolutePath();
 					if (identifier != null)
-						luceneImpl.insertMetadata(identifier, lom, cName);
+						luceneImpl.insertMetadata(identifier, lom, cName,fPath);
 				} catch (Exception e) {
 					log.error("indexFile: fileName=" + mdFile.getName(), e);
 				}
