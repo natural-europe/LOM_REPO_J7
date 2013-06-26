@@ -248,16 +248,18 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
 
 		Collection<Object> values = doc.getFieldValues(fieldName);
 
-		if (values != null) {
-
-			Object[] results = values.toArray();
-
-			int length = results.length;
-			if (length == 1) {
-				Object object = results[0];
-				json.put(responeseName, object);
-
-			} else {
+		Object[] results = values.toArray();
+		
+//		if (values != null) {
+//
+//			Object[] results = values.toArray();
+//
+//			int length = results.length;
+//			if (length == 1) {
+//				Object object = results[0];
+//				json.put(responeseName, object);
+//
+//			} else {
 				JSONObject jsonObject = new JSONObject();
 
 				for (int i = 0; i < results.length; i++) {
@@ -268,9 +270,9 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
 
 				}
 				json.put(responeseName, jsonObject);
-			}
+			//}
 
-		}
+		//}
 
 		// if (field != null)
 		// json.put(responeseName, field);
