@@ -248,12 +248,12 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
 
 		Collection<Object> values = doc.getFieldValues(fieldName);
 
-		Object[] results = values.toArray();
-		
-//		if (values != null) {
-//
-//			Object[] results = values.toArray();
-//
+		// Object[] results = values.toArray();
+
+		if (values != null) {
+
+			Object[] results = values.toArray();
+
 //			int length = results.length;
 //			if (length == 1) {
 //				Object object = results[0];
@@ -272,7 +272,7 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
 				json.put(responeseName, jsonObject);
 			//}
 
-		//}
+		}
 
 		// if (field != null)
 		// json.put(responeseName, field);
