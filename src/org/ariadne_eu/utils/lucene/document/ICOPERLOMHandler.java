@@ -184,7 +184,7 @@ public class ICOPERLOMHandler extends DocumentHandler {
 					doc.add(new Field(tmpBranche + BRANCH_SEPARATOR + "cso-foe", taxonPathId, Field.Store.YES,Field.Index.NOT_ANALYZED));
 				
 				
-				//GAP: lo a�ado para hacer la prueba con solr
+				
 				taxonPathId = elementBuffer.toString().trim().toLowerCase().replaceAll("\\(.*\\)", "").replaceAll("[a-z]\\.[0-9]", "").replaceAll("\\.[0-9]","");
 				doc.add(new Field(tmpBranche, taxonPathId, Field.Store.YES,Field.Index.ANALYZED));
 				

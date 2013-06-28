@@ -219,7 +219,7 @@ public class ODSAP_Handler extends DocumentHandler {
 						.replaceAll("\\.[0-9]", "");
 				purposeFieldName = tmpBranche + ATT_SEPARATOR + "" + purpose;
 
-				// GAP: lo a�ado para hacer la prueba con solr
+				
 				purpose = elementBuffer.toString().toLowerCase()
 						.replaceAll("\\(.*\\)", "")
 						.replaceAll("[a-z]\\.[0-9]", "")

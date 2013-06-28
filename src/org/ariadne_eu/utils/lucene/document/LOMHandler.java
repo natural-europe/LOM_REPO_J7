@@ -177,7 +177,7 @@ public class LOMHandler extends DocumentHandler {
 				purpose = elementBuffer.toString().trim().toLowerCase().replaceAll(" ", "").replaceAll("\\(.*\\)", "").replaceAll("[a-z]\\.[0-9]", "").replaceAll("\\.[0-9]","");
 				purposeFieldName = tmpBranche + ATT_SEPARATOR + "" + purpose;
 				
-				//GAP: lo a�ado para hacer la prueba con solr
+				
 				purpose = elementBuffer.toString().toLowerCase().replaceAll("\\(.*\\)", "").replaceAll("[a-z]\\.[0-9]", "").replaceAll("\\.[0-9]","").trim();
 				doc.add(new Field(tmpBranche, purpose, Field.Store.YES,Field.Index.ANALYZED));// XXX
 				doc.add(new Field(tmpBranche + ".exact", purpose, Field.Store.YES,Field.Index.NOT_ANALYZED));// XXX
