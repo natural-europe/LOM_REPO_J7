@@ -252,7 +252,7 @@ public class ODSAP_Handler extends DocumentHandler {
 						.replaceAll("\\.[0-9]", "").trim();
 				tpIdFieldName = tmpBranche + ATT_SEPARATOR + "" + taxonPathId;
 
-				// GAP: lo a�ado para hacer la prueba con solr
+				
 				taxonPathId = elementBuffer.toString().trim().toLowerCase()
 						.replaceAll("\\(.*\\)", "")
 						.replaceAll("[a-z]\\.[0-9]", "")

@@ -198,7 +198,7 @@ public class LOMHandler extends DocumentHandler {
 				tpIdFieldName = tmpBranche + ATT_SEPARATOR + "" + taxonPathId;
 				
 				
-				//GAP: lo a�ado para hacer la prueba con solr
+				
 				taxonPathId = elementBuffer.toString().trim().toLowerCase().replaceAll("\\(.*\\)", "").replaceAll("[a-z]\\.[0-9]", "").replaceAll("\\.[0-9]","");
 				doc.add(new Field(tmpBranche, taxonPathId, Field.Store.YES,Field.Index.ANALYZED));// XXX
 				doc.add(new Field(tmpBranche + ".exact",taxonPathId, Field.Store.YES,Field.Index.NOT_ANALYZED));// XXX
