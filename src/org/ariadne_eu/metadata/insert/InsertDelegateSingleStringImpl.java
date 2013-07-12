@@ -63,6 +63,7 @@ public class InsertDelegateSingleStringImpl implements IndexInserterDelegate {
 
 			doc.add(new Field("mdPath", fPath, Field.Store.YES,
 					Field.Index.NOT_ANALYZED));
+
 			String luceneHandler = PropertiesManager.getInstance().getProperty(
 					RepositoryConstants.getInstance().SR_LUCENE_HANDLER);
 			if (luceneHandler
@@ -75,13 +76,15 @@ public class InsertDelegateSingleStringImpl implements IndexInserterDelegate {
 						Field.TermVector.WITH_POSITIONS_OFFSETS));
 			}
 			if (!luceneHandler
-					.equalsIgnoreCase("org.ariadne_eu.utils.lucene.document.LOMLiteHandler")
-					|| !luceneHandler
-							.equalsIgnoreCase("org.ariadne_eu.utils.lucene.document.LOMLiteLangHandler")) {
+					.equals("org.ariadne_eu.utils.lucene.document.LOMLiteHandler")
+					|| luceneHandler
+							.equals("org.ariadne_eu.utils.lucene.document.LOMLiteLangHandler")) {
+
 				doc.add(new Field("md", insertMetadata, Field.Store.YES,
 						Field.Index.NOT_ANALYZED,
 						Field.TermVector.WITH_POSITIONS_OFFSETS));
-			}
+			} else
+				System.out.println("Not inserting md index field");
 
 			// writer.addDocument(doc);
 			Term term = new Term("key", key);
