@@ -76,16 +76,17 @@ public class InsertDelegateSingleStringImpl implements IndexInserterDelegate {
 						Field.Index.NOT_ANALYZED,
 						Field.TermVector.WITH_POSITIONS_OFFSETS));
 			}
+
 			if (!luceneHandler
 					.equals("org.ariadne_eu.utils.lucene.document.LOMLiteHandler")
-					|| !luceneHandler
+					&& !luceneHandler
 							.equals("org.ariadne_eu.utils.lucene.document.LOMLiteLangHandler")) {
 
-				doc.add(new Field("md","shit" , Field.Store.YES,  //insertMetadata
+				doc.add(new Field("md", insertMetadata,
+						Field.Store.YES, // insertMetadata
 						Field.Index.NOT_ANALYZED,
 						Field.TermVector.WITH_POSITIONS_OFFSETS));
-			} else
-				System.out.println("Not inserting md index field");
+			}
 
 			// writer.addDocument(doc);
 			Term term = new Term("key", key);

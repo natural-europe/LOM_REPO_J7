@@ -84,36 +84,25 @@ public class LOMLiteLangHandler extends DocumentHandler {
 			attributeMap = new HashMap<String, String>();
 
 			for (int i = 0; i < atts.getLength(); i++) {
-				attributeMap.put(atts.getQName(i), atts.getValue(i));
 
-				if (!atts.getQName(i).equals("uniqueElementName")) {
-					if (atts.getQName(i).equalsIgnoreCase("xmlns")
-							|| atts.getQName(i).equalsIgnoreCase(
-									"xsi:schemaLocation")) {
-						String fieldName = "untokenized." + atts.getQName(i);
-						doc.add(new Field(fieldName.toLowerCase(), atts
-								.getValue(i).toLowerCase(), Field.Store.YES,
-								Field.Index.NOT_ANALYZED));// XXX
-						fieldName = atts.getQName(i);
-						doc.add(new Field(fieldName.toLowerCase(), atts
-								.getValue(i).toLowerCase(), Field.Store.YES,
-								Field.Index.NOT_ANALYZED));// XXX
+				String attName = atts.getQName(i);
+				if (attName.equals("language")) {
+					String attValue = atts.getValue(i);
+					attributeMap.put(attName, attValue);
 
-					} else {
-						String tmpBranche = branche.substring(0,
-								branche.length());
-						// remove the NS+colons on any element
-						if (tmpBranche.contains(":")) {
-							tmpBranche = tmpBranche.replaceAll("(\\w+):", "");
-						}
-						String fieldName = tmpBranche + "" + ATT_SEPARATOR + ""
-								+ atts.getQName(i);
-						doc.add(new Field(fieldName.toLowerCase(), atts
-								.getValue(i).toLowerCase(), Field.Store.YES,
-								Field.Index.NOT_ANALYZED));// XXX
-
+					String tmpBranche = branche.substring(0, branche.length());
+					// remove the NS+colons on any element
+					if (tmpBranche.contains(":")) {
+						tmpBranche = tmpBranche.replaceAll("(\\w+):", "");
 					}
+					String fieldName = tmpBranche + "" + ATT_SEPARATOR + ""
+							+ attName;
+					doc.add(new Field(fieldName.toLowerCase(), attValue
+							.toLowerCase(), Field.Store.YES,
+							Field.Index.NOT_ANALYZED));// XXX
+
 				}
+
 			}
 		}
 		branche += BRANCH_SEPARATOR;

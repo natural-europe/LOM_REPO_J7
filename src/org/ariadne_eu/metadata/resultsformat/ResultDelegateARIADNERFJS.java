@@ -90,15 +90,12 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
 			try {
 				idArrayJson.put(doc.get("lom.general.identifier.entry"));
 
-				addJsonObjectWE(doc, json, "lom.general.title.langstring",
-						"title");
+				
 				addJsonObjectWE(doc, json, "lom.general.title.string", "title");
 
 				addJsonObjectWE(doc, json, "lom.general.identifier.entry",
 						"identifier");
 
-				addJsonObjectWE(doc, json,
-						"lom.general.description.langstring", "descriptions");
 				addJsonObjectWE(doc, json, "lom.general.description.string",
 						"descriptions");
 
@@ -158,8 +155,6 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
 				addJsonObjectWE(doc, json, "lom.annotation.date.datetime",
 						"annotation date");
 
-				addJsonObjectWE(doc, json, "lom.rights.description.langstring",
-						"rights");
 				addJsonObjectWE(doc, json, "lom.rights.description.string",
 						"rights");
 
