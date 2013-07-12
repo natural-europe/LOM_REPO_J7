@@ -171,6 +171,7 @@ public class LOMLiteLangHandler extends DocumentHandler {
 		}
 		/*
 		 * ------- 23/10/12 Change for supporting classification facet
+		 * 
 		 * @NaturalEurope if
 		 * (tmpBranche.matches(".*classification\\.((purpose)|(taxonpath)).*"))
 		 * { if

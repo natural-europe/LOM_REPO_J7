@@ -75,7 +75,9 @@ public class InsertDelegateSingleStringImpl implements IndexInserterDelegate {
 						Field.TermVector.WITH_POSITIONS_OFFSETS));
 			}
 			if (!luceneHandler
-					.equalsIgnoreCase("org.ariadne_eu.utils.lucene.document.LOMLiteHandler")) {
+					.equalsIgnoreCase("org.ariadne_eu.utils.lucene.document.LOMLiteHandler")
+					|| !luceneHandler
+							.equalsIgnoreCase("org.ariadne_eu.utils.lucene.document.LOMLiteLangHandler")) {
 				doc.add(new Field("md", insertMetadata, Field.Store.YES,
 						Field.Index.NOT_ANALYZED,
 						Field.TermVector.WITH_POSITIONS_OFFSETS));
