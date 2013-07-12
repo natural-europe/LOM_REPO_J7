@@ -66,6 +66,7 @@ public class InsertDelegateSingleStringImpl implements IndexInserterDelegate {
 
 			String luceneHandler = PropertiesManager.getInstance().getProperty(
 					RepositoryConstants.getInstance().SR_LUCENE_HANDLER);
+
 			if (luceneHandler
 					.equalsIgnoreCase("org.ariadne_eu.utils.lucene.document.MACELOMHandler")) {
 				MACEUtils.getClassification();
@@ -77,10 +78,10 @@ public class InsertDelegateSingleStringImpl implements IndexInserterDelegate {
 			}
 			if (!luceneHandler
 					.equals("org.ariadne_eu.utils.lucene.document.LOMLiteHandler")
-					|| luceneHandler
+					|| !luceneHandler
 							.equals("org.ariadne_eu.utils.lucene.document.LOMLiteLangHandler")) {
 
-				doc.add(new Field("md", insertMetadata, Field.Store.YES,
+				doc.add(new Field("md","shit" , Field.Store.YES,  //insertMetadata
 						Field.Index.NOT_ANALYZED,
 						Field.TermVector.WITH_POSITIONS_OFFSETS));
 			} else
