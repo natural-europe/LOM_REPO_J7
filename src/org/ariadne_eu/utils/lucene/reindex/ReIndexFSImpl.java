@@ -199,9 +199,15 @@ public class ReIndexFSImpl extends ReIndexImpl {
 							new OutputFormat(doc));
 					serializer.serialize((Element) doc.getFirstChild());
 					String lom = out.toString();
-					 fPath = mdFile.getAbsolutePath();
+					fPath = mdFile.getAbsolutePath();
+
+					
+					identifier += fPath;
+					identifier = String.valueOf(identifier.hashCode());
+
 					if (identifier != null)
-						luceneImpl.insertMetadata(identifier, lom, cName,fPath);
+						luceneImpl
+								.insertMetadata(identifier, lom, cName, fPath);
 				} catch (Exception e) {
 					log.error("indexFile: fileName=" + mdFile.getName(), e);
 				}
