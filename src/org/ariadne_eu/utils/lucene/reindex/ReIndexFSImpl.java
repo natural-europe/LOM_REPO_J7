@@ -143,8 +143,11 @@ public class ReIndexFSImpl extends ReIndexImpl {
 		if (luceneImpl == null)
 			return;
 
-		// luceneImpl.createLuceneIndex();
-		luceneImpl.openLuceneIndex();
+		if (!repositories.equals("*")) {
+			luceneImpl.createLuceneIndex();
+		} else {
+			luceneImpl.openLuceneIndex(repoSelected);
+		}
 
 		String implementation = PropertiesManager.getInstance().getProperty(
 				RepositoryConstants.getInstance().MD_INSERT_IMPLEMENTATION);
@@ -201,13 +204,13 @@ public class ReIndexFSImpl extends ReIndexImpl {
 					String lom = out.toString();
 					fPath = mdFile.getAbsolutePath();
 
-					
 					identifier += fPath;
 					identifier = String.valueOf(identifier.hashCode());
 
 					if (identifier != null)
 						luceneImpl
 								.insertMetadata(identifier, lom, cName, fPath);
+
 				} catch (Exception e) {
 					log.error("indexFile: fileName=" + mdFile.getName(), e);
 				}
