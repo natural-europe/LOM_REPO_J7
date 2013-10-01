@@ -118,10 +118,16 @@ public class ReIndexFSImpl extends ReIndexImpl {
 					else
 						log.error("Resitory:" + repo.getName()
 								+ " is allready in the list to be reindexed.");
-				} else
-					log.error("Repository:" + repo.getName()
-							+ " does not exist.");
-
+				} else {
+					log.error("Repository:"
+							+ repo.getName()
+							+ " does not exist.It will be deleted from the index");
+					if (!files.contains(repo))
+						files.add(repo);
+					else
+						log.error("Resitory:" + repo.getName()
+								+ " is allready in the list to be deleted.");
+				}
 			}
 		} else {
 			log.error("Indexing all repositories");
@@ -143,24 +149,30 @@ public class ReIndexFSImpl extends ReIndexImpl {
 		if (luceneImpl == null)
 			return;
 
-		if (!repositories.equals("*")) {
+		if (repositories.equals("*")) {
 			luceneImpl.createLuceneIndex();
 		} else {
 			luceneImpl.openLuceneIndex(repoSelected);
 		}
 
+		
 		String implementation = PropertiesManager.getInstance().getProperty(
 				RepositoryConstants.getInstance().MD_INSERT_IMPLEMENTATION);
 		if (implementation != null) {
 
 			for (int i = 0; i < files.size(); i++) {
 				mdFile = files.elementAt(i);
-				if (mdFile.isDirectory()) {
-					indexFile(mdFile, luceneImpl,
-							new String[] { mdFile.getName() });
-				} else {
-					indexFile(mdFile, luceneImpl, new String[] { "ARIADNE" });
+
+				if (mdFile.exists()) {
+					if (mdFile.isDirectory()) {
+						indexFile(mdFile, luceneImpl,
+								new String[] { mdFile.getName() });
+					} else {
+						indexFile(mdFile, luceneImpl,
+								new String[] { "ARIADNE" });
+					}
 				}
+
 			}
 		}
 	}
