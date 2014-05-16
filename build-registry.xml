@@ -76,7 +76,7 @@
 		<echo>Building</echo>
 		<mkdir dir="${output.basedir}" />
 		<mkdir dir="${output.classes}" />
-        <javac destdir="${output.classes}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memoryMaximumSize="${compiler.max.memory}" fork="true" target="1.5">
+        <javac destdir="${output.classes}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memoryMaximumSize="${compiler.max.memory}" fork="true">
 			<compilerarg line="${compiler.args}" />
 			<bootclasspath refid="bootclasspath" />
 			<classpath refid="project.classpath" />

@@ -514,6 +514,8 @@
     
     <field name="learningoutcome.type.value" type="string" indexed="true" stored="true" multiValued="true"/>
     <field name="learningoutcome.title.string.language" type="string" indexed="true" stored="true" multiValued="true"/>
+    
+    <field name="lom.technical.format" type="string" indexed="true" stored="true" multiValued="true"/>
 
 
     <dynamicField name="*" type="ignored" multiValued="true"/>

@@ -97,7 +97,7 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
 						"identifier");
 
 				addJsonObjectWE(doc, json, "lom.general.description.string",
-						"descriptions");
+						"description");
 
 				addJsonObjectWE(doc, json, "lom.general.language", "language");
 
@@ -350,6 +350,8 @@ public class ResultDelegateARIADNERFJS implements IndexSearchDelegate {
 			return "format";
 		else if (internalName.equalsIgnoreCase("lom.general.language"))
 			return "language";
+		else if (internalName.equalsIgnoreCase("lom.general.description.string"))
+			return "description";
 		else if (internalName.equalsIgnoreCase("collection"))
 			return "provider";
 		else if (internalName

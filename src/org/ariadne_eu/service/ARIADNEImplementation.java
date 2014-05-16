@@ -177,6 +177,8 @@ public class ARIADNEImplementation {
 	private String changeFacetName(String expression) {
 		if (expression.contains("lrt:"))
 			expression = expression.replace("lrt:", "lom.educational.learningresourcetype.value:");
+		if (expression.contains("description:"))
+			expression = expression.replace("description:", "lom.general.description.string:");
 		if (expression.contains("context:"))
 			expression =  expression.replace("context:", "lom.educational.context.value:");
 		if (expression.contains("format:"))
