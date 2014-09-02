@@ -11,14 +11,31 @@ public class MetadataCollection{
 	Description _description;
 	List<TargetDescription> _target;
 	ResponsibleType _responsible;
+	String _xsltURL;
 	
 	public MetadataCollection(){
 		_identifier = new Identifier();
 		_description = new Description();
 		_target=new ArrayList<TargetDescription>();
 		_responsible = new ResponsibleType();
+		_xsltURL="";
+		
 	}
 	
+	/**
+	 * @return the _xsltURL
+	 */
+	private String get_xsltURL() {
+		return _xsltURL;
+	}
+
+	/**
+	 * @param _xsltURL the _xsltURL to set
+	 */
+	private void set_xsltURL(String _xsltURL) {
+		this._xsltURL = _xsltURL;
+	}
+
 	public MetadataCollection(Identifier identifier, Description description){
 		_description=description;
 		_identifier=identifier;
@@ -74,6 +91,8 @@ public class MetadataCollection{
 						+ _identifier.getXMLIdentifier("\t") 
 						+ _description.getXMLDescription("\t")
 						+ _responsible.getXMLResponsibleType("\t");
+						
+						
 		for (int i=0;i<_target.size();i++){
 			xml += _target.get(i).getXMLTargetDescription("\t");
 		}		
