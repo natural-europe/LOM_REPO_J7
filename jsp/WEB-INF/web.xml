@@ -35,18 +35,8 @@
 	</context-param>
 
 	<!-- Filters -->
-	<filter>
-		<filter-name>admin-only</filter-name>
-		<filter-class>org.ariadne_eu.utils.registry.auth.AdminOnlyFilter
-		</filter-class>
-	</filter>
 
 	<filter>
-		<filter-name>registered-only</filter-name>
-		<filter-class>org.ariadne_eu.utils.registry.auth.RegisteredOnlyFilter
-		</filter-class>
-	</filter>
-<!-- <filter>
 		<filter-name>admin-only</filter-name>
 		<filter-class>org.ariadne_eu.webui.filter.AdminOnlyFilter
 		</filter-class>
@@ -56,25 +46,14 @@
 		<filter-name>registered-only</filter-name>
 		<filter-class>org.ariadne_eu.webui.filter.RegisteredOnlyFilter
 		</filter-class>
-	</filter> -->	
+	</filter>
 
 	<!-- Filter mappings -->
-	
-	<filter-mapping>
-		<filter-name>registered-only</filter-name>
-		<url-pattern>/form/*</url-pattern>
-	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>registered-only</filter-name>
-		<url-pattern>/admin-ariadne-registry/*</url-pattern>
-	</filter-mapping>
-	
+
 	<filter-mapping>
 		<filter-name>admin-only</filter-name>
 		<url-pattern>/admin/*</url-pattern>
 	</filter-mapping>
-
 
 	<filter-mapping>
 		<filter-name>admin-only</filter-name>
@@ -104,11 +83,6 @@
 
 	<!-- Servlets -->
 
-	<servlet>
-        <servlet-name>openid</servlet-name>
-        <servlet-class>org.ariadne_eu.utils.registry.auth.OpenIdServlet</servlet-class>
-    </servlet>
-    
 	<servlet>
 		<servlet-name>InitServlet</servlet-name>
 		<display-name>Initialisation Servlet</display-name>
@@ -183,11 +157,7 @@
 
 	<!-- Servlet Mappings -->
 
-	<servlet-mapping>
-		<servlet-name>openid</servlet-name>
-		<url-pattern>/auth/openid</url-pattern>
-	</servlet-mapping>
-	
+
 	<servlet-mapping>
 		<servlet-name>OAIHandler</servlet-name>
 		<url-pattern>/services/oai</url-pattern>
